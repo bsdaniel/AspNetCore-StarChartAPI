@@ -13,7 +13,7 @@ namespace StarChart.Controllers
     [Route("")]
     [ApiController]
 
-    
+
     public class CelestialObjectController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
@@ -27,7 +27,7 @@ namespace StarChart.Controllers
         [HttpGet("{id:int}", Name = "GetById")]
 
         //IActionResult return type with the parameters of id. 
-        public IActionResult GetById (int id)
+        public IActionResult GetById(int id)
         {
             //Sets variable to search for Id's...
             var celestialObject = _context.CelestialObjects.Find(id);
@@ -38,7 +38,7 @@ namespace StarChart.Controllers
 
             // Returns the value of the matching Id parameter. 
             return Ok(celestialObject);
-            
+
         }
 
         [HttpGet("{name}")]
@@ -46,7 +46,7 @@ namespace StarChart.Controllers
         public IActionResult GetByName(string name)
         {
             //Creates variable to search for name...
-            var celestialObjects= _context.CelestialObjects.Where(e => e.Name == name).ToList();
+            var celestialObjects = _context.CelestialObjects.Where(e => e.Name == name).ToList();
 
             // Returns not found when there is no property name that matches the parameter...
             if (celestialObjects.Any())
@@ -56,7 +56,7 @@ namespace StarChart.Controllers
                 // Searches for matching id's.
                 celestialObject.Satellites = _context.CelestialObjects.Where(e => e.OrbitedObjectId == celestialObject.Id).ToList();
             }
-               
+
             return Ok(celestialObjects);
         }
 
@@ -72,4 +72,5 @@ namespace StarChart.Controllers
             }
             return Ok(celestialObjects);
         }
+    }
 }
