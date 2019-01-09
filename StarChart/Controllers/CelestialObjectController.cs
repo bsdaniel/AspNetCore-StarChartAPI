@@ -89,7 +89,7 @@ namespace StarChart.Controllers
 
         // Passes the parameters
         [HttpPut("{id}")]
-        public IActionResult Update(int id, CelestialObject celestialObject
+        public IActionResult Update(int id, CelestialObject celestialObject)
         {
             //Searches for an existing object by id (Find)...
             var existingObject = _context.CelestialObjects.Find(id);
