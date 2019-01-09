@@ -49,7 +49,7 @@ namespace StarChart.Controllers
             var celestialObjects = _context.CelestialObjects.Where(e => e.Name == name).ToList();
 
             // Returns not found when there is no property name that matches the parameter...
-            if (celestialObjects.Any())
+            if (!celestialObjects.Any())
                 return NotFound();
             foreach (var celestialObject in celestialObjects)
             {
